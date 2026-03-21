@@ -14,46 +14,16 @@ function postUpdate() {
         return;
     }
 
-    // Farben pro Kategorie für Discord Embed
-    const categoryColors = {
-        "Update": 5763719,
-        "Construction": 16753920,
-        "Bugfix": 16711680,
-        "Improvement": 65280
-    };
-
-    // Emojis für Kategorien (optional für Discord Embed)
-    const categoryEmojis = {
-        "Update": "✨",
-        "Construction": "🛠️",
-        "Bugfix": "🐛",
-        "Improvement": "⚡"
-    };
-
     const payload = {
         embeds: [
             {
-                title: `${categoryEmojis[category] || ""} ${title}`,
-                color: categoryColors[category] || 5763719,
-                fields: [
-                    { name: "Kategorie", value: category, inline: true },
-                    { name: "Datum", value: date, inline: true },
-                    { name: "Beschreibung", value: text }
-                ],
-                author: {
-                    name: "Admin Changelog",
-                    icon_url: "https://i.imgur.com/0PjQXzU.png"
-                },
-                footer: {
-                    text: "Powered by Admin Panel",
-                    icon_url: "https://i.imgur.com/0PjQXzU.png"
-                },
-                timestamp: new Date()
+                title: title,
+                description: `Category: ${category}\nDate: ${date}\n\n${text}`,
+                color: 5763719
             }
         ]
     };
 
-    // Nachricht an Discord senden
     fetch(webhookURL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -63,8 +33,8 @@ function postUpdate() {
         if (response.ok) {
             alert("Update erfolgreich an Discord gesendet!");
 
-            // Log in localStorage speichern (für changelog.html)
-            let logs = JSON.parse(localStorage.getItem("logs")) || [];
+            // --- Hier speichern wir die Logs sauber ---
+            let logs = JSON.parse(localStorage.getItem("logs") || "[]");
             logs.push({
                 title: title,
                 text: text,
@@ -82,9 +52,9 @@ function postUpdate() {
             alert("Fehler beim Senden: " + response.status);
         }
     })
-    .catch(error => {
-        console.error("Fehler:", error);
-        alert("Fehler beim Senden. Prüfe die Konsole.");
+    .catch(err => {
+        console.error(err);
+        alert("Fehler beim Senden.");
     });
 }
 
