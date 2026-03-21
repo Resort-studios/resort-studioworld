@@ -2,26 +2,180 @@
 <html>
 
 <head>
-<title>Add Update</title>
+<title>Admin – Post Update</title>
+
 <link rel="stylesheet" href="style/style.css">
+
+<style>
+
+body{
+font-family:Arial;
+background:#f5f5f5;
+margin:0;
+}
+
+/* Container */
+
+.admin-container{
+
+max-width:700px;
+margin:60px auto;
+background:white;
+padding:30px;
+border-radius:15px;
+box-shadow:0 5px 20px rgba(0,0,0,0.1);
+
+}
+
+/* Titel */
+
+.admin-container h1{
+
+margin-top:0;
+text-align:center;
+
+}
+
+/* Inputs */
+
+.admin-container input,
+.admin-container textarea,
+.admin-container select{
+
+width:100%;
+padding:12px;
+margin-top:10px;
+margin-bottom:20px;
+
+border-radius:8px;
+border:1px solid #ccc;
+
+font-size:16px;
+
+}
+
+/* Textarea größer */
+
+.admin-container textarea{
+
+height:120px;
+resize:vertical;
+
+}
+
+/* Button */
+
+.post-btn{
+
+background:#2d6cdf;
+color:white;
+
+border:none;
+padding:14px;
+
+width:100%;
+
+border-radius:10px;
+
+font-size:16px;
+cursor:pointer;
+
+transition:0.2s;
+
+}
+
+.post-btn:hover{
+
+background:#1f4ea3;
+
+}
+
+/* Vorschau */
+
+.preview{
+
+margin-top:30px;
+padding:20px;
+
+background:#eeeeee;
+
+border-radius:10px;
+
+}
+
+</style>
+
 </head>
 
 <body>
 
-<h1>Add Changelog Entry</h1>
 
-<input id="title" placeholder="Update title">
+<div class="admin-container">
 
-<br><br>
+<h1>Post Changelog Update</h1>
 
-<textarea id="text" placeholder="What changed"></textarea>
 
-<br><br>
+<label>Title</label>
+<input id="title" placeholder="Example: New Ride Started">
 
-<button onclick="addUpdate()">Post Update</button>
+
+<label>Category</label>
+
+<select id="category">
+
+<option>Update</option>
+<option>Construction</option>
+<option>Bugfix</option>
+<option>Improvement</option>
+
+</select>
+
+
+<label>Description</label>
+
+<textarea id="text" placeholder="Describe what changed..."></textarea>
+
+
+<button class="post-btn" onclick="postUpdate()">
+
+Post Update
+
+</button>
+
+
+
+<div class="preview">
+
+<h3>Preview</h3>
+
+<p id="previewText">
+
+Your update preview appears here...
+
+</p>
+
+</div>
+
+
+</div>
 
 
 <script src="admin.js"></script>
+
+
+<script>
+
+/* Live Vorschau */
+
+document.getElementById("text").addEventListener("input", function(){
+
+document.getElementById("previewText").innerText =
+this.value;
+
+});
+
+</script>
+
 
 </body>
 </html>
