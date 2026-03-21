@@ -70,54 +70,36 @@
 
 
 
-<!-- CHANGELOG HEADER -->
+ <!-- CHANGELOG HEADER -->
+    <section class="models-header1">
+        <h2>Changelog</h2>
+        <div class="divider">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </section>
 
-<section class="models-header1">
+    <!-- CHANGELOG LISTE -->
+    <section class="changelog" id="logContainer"></section>
 
-<h2>Changelog</h2>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let logs = JSON.parse(localStorage.getItem("logs") || "[]");
+            let container = document.getElementById("logContainer");
 
-<div class="divider">
-<span></span>
-<span></span>
-<span></span>
-</div>
-
-</section>
-
-
-
-<!-- CHANGELOG LISTE -->
-
-<section class="changelog" id="logContainer"></section>
-
-<script>
-
-let logs = JSON.parse(localStorage.getItem("logs")) || [];
-
-let container = document.getElementById("logContainer");
-
-logs.reverse().forEach(log => {
-
-container.innerHTML += `
-
-<div class="log-card">
-
-<h3>${log.date}</h3>
-
-<ul>
-
-<li>${log.title}</li>
-<li>${log.text}</li>
-
-</ul>
-
-</div>
-
-`;
-
-});
-
-</script>
-
+            logs.slice().reverse().forEach(log => {
+                container.innerHTML += `
+                    <div class="log-card">
+                        <h3>${log.date} - ${log.category}</h3>
+                        <ul>
+                            <li><strong>${log.title}</strong></li>
+                            <li>${log.text}</li>
+                        </ul>
+                    </div>
+                `;
+            });
+        });
+    </script>
 </body>
 </html>
