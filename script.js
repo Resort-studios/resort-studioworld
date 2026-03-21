@@ -47,3 +47,20 @@ updateServerStatus();
 
 /* alle 20 Sekunden neu laden */
 setInterval(updateServerStatus, 10000);
+
+// Logs aus localStorage laden und anzeigen
+let logs = JSON.parse(localStorage.getItem("logs")) || [];
+let container = document.getElementById("logContainer");
+
+// Neueste zuerst anzeigen, Layout bleibt wie vorher
+logs.slice().reverse().forEach(log => {
+    container.innerHTML += `
+    <div class="log-card">
+        <h3>${log.date} - ${log.category}</h3>
+        <ul>
+            <li><strong>${log.title}</strong></li>
+            <li>${log.text}</li>
+        </ul>
+    </div>
+    `;
+});
