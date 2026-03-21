@@ -1,4 +1,4 @@
-const webhookURL = "DEIN_DISCORD_WEBHOOK";
+const webhookURL = "https://discord.com/api/webhooks/1485052312048107641/tOTwdxvBXJv5YJTTo3XPR_oK_rcXca54w_DnJir95dh4lD1uELihGf-UPJJJyryVz1ze";
 
 function postUpdate(){
 
