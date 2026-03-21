@@ -14,27 +14,35 @@ function postUpdate() {
         return;
     }
 
-    // Farben je Kategorie (Discord Farben in Dezimal)
+    // Farben pro Kategorie für Discord Embed
     const categoryColors = {
-        "Update": 5763719,       // Blau
-        "Construction": 16753920, // Orange
-        "Bugfix": 16711680,      // Rot
-        "Improvement": 65280      // Grün
+        "Update": 5763719,
+        "Construction": 16753920,
+        "Bugfix": 16711680,
+        "Improvement": 65280
+    };
+
+    // Emojis für Kategorien (optional für Discord Embed)
+    const categoryEmojis = {
+        "Update": "✨",
+        "Construction": "🛠️",
+        "Bugfix": "🐛",
+        "Improvement": "⚡"
     };
 
     const payload = {
         embeds: [
             {
-                title: title,
+                title: `${categoryEmojis[category] || ""} ${title}`,
                 color: categoryColors[category] || 5763719,
                 fields: [
-                    { name: "Category", value: category, inline: true },
-                    { name: "Date", value: date, inline: true },
-                    { name: "Description", value: text }
+                    { name: "Kategorie", value: category, inline: true },
+                    { name: "Datum", value: date, inline: true },
+                    { name: "Beschreibung", value: text }
                 ],
                 author: {
                     name: "Admin Changelog",
-                    icon_url: "https://i.imgur.com/0PjQXzU.png" // kleines Symbol
+                    icon_url: "https://i.imgur.com/0PjQXzU.png"
                 },
                 footer: {
                     text: "Powered by Admin Panel",
@@ -45,6 +53,7 @@ function postUpdate() {
         ]
     };
 
+    // Nachricht an Discord senden
     fetch(webhookURL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -53,6 +62,18 @@ function postUpdate() {
     .then(response => {
         if (response.ok) {
             alert("Update erfolgreich an Discord gesendet!");
+
+            // Log in localStorage speichern (für changelog.html)
+            let logs = JSON.parse(localStorage.getItem("logs")) || [];
+            logs.push({
+                title: title,
+                text: text,
+                category: category,
+                date: date
+            });
+            localStorage.setItem("logs", JSON.stringify(logs));
+
+            // Felder zurücksetzen
             document.getElementById("title").value = "";
             document.getElementById("text").value = "";
             document.getElementById("category").value = "Update";
