@@ -1,26 +1,21 @@
-const webhookURL = "https://discord.com/api/webhooks/1485052312048107641/tOTwdxvBXJv5YJTTo3XPR_oK_rcXca54w_DnJir95dh4lD1uELihGf-UPJJJyryVz1ze";
+const webhookURL = "DEIN_DISCORD_WEBHOOK";
 
-function addUpdate(){
+function postUpdate(){
 
-const title = document.getElementById("title").value;
-const text = document.getElementById("text").value;
+const title =
+document.getElementById("title").value;
 
-const update = {
+const text =
+document.getElementById("text").value;
 
-date: new Date().toLocaleDateString(),
-title: title,
-text: text
+const category =
+document.getElementById("category").value;
 
-};
+const date =
+new Date().toISOString().split("T")[0];
 
-/* speichern im Browser */
-let logs = JSON.parse(localStorage.getItem("logs")) || [];
 
-logs.push(update);
-
-localStorage.setItem("logs", JSON.stringify(logs));
-
-/* discord senden */
+/* Discord Nachricht */
 
 fetch(webhookURL,{
 
@@ -33,17 +28,30 @@ headers:{
 body: JSON.stringify({
 
 embeds:[
+
 {
-title:title,
-description:text,
+
+title: title,
+
+description:
+
+"Category: " + category +
+
+"\nDate: " + date +
+
+"\n\n" + text,
+
 color: 5763719
+
 }
+
 ]
 
 })
 
 });
 
-alert("Update posted!");
+
+alert("Update sent to Discord!");
 
 }
