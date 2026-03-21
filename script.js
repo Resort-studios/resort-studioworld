@@ -52,6 +52,24 @@ setInterval(updateServerStatus, 10000);
 let logs = JSON.parse(localStorage.getItem("logs")) || [];
 let container = document.getElementById("logContainer");
 
+document.addEventListener("DOMContentLoaded", function() {
+    const logs = JSON.parse(localStorage.getItem("logs") || "[]");
+    const container = document.getElementById("logContainer");
+
+    // Neueste zuerst anzeigen
+    logs.slice().reverse().forEach(log => {
+        container.innerHTML += `
+        <div class="log-card">
+            <h3>${log.date} - ${log.category}</h3>
+            <ul>
+                <li><strong>${log.title}</strong></li>
+                <li>${log.text}</li>
+            </ul>
+        </div>
+        `;
+    });
+});
+
 // Neueste zuerst anzeigen, Layout bleibt wie vorher
 logs.slice().reverse().forEach(log => {
     container.innerHTML += `
