@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Changelog</title>
+    <link rel="stylesheet" href="style/style.css">
+</head>
+
+<body>
+
+<nav>
+  <ul class="navbar">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="">Not Available</a></li>
+    <li><a href="changelog.html">Changelog</a></li>
+  </ul>
+</nav>
+
+<script src="script.js"></script>
+
+<!-- PROJEKTSTATUS -->
+<section class="models-header">
+
+<h2>Construction Status</h2>
+
+<div class="divider">
+<span></span>
+<span></span>
+<span></span>
+</div>
+
+</section>
+
+<section class="projektstatus">
+
+<div class="project">
+
+<h3>Studio Tour</h3>
+
+<div class="progress-container">
+<div class="progress-bar striped" style="width:9%">9%</div> 
+</div>
+
+</div>
+
+
+
+<div class="project">
+
+<h3>Main Street</h3>
+
+<div class="progress-container">
+<div class="progress-bar striped" style="width:8%">8%</div>
+</div>
+
+</div>
+
+<div class="project">
+
+<h3>Entrance</h3>
+
+<div class="progress-container">
+<div class="progress-bar striped" style="width:0%"></div>
+</div>
+
+</div>
+
+</section>
+
+
+
+
+<!-- CHANGELOG HEADER -->
+
+<section class="models-header1">
+
+<h2>Changelog</h2>
+
+<div class="divider">
+<span></span>
+<span></span>
+<span></span>
+</div>
+
+</section>
+
+
+
+<!-- CHANGELOG LISTE -->
+
+<section class="changelog" id="logContainer"></section>
+
+<script>
+
+let logs = JSON.parse(localStorage.getItem("logs")) || [];
+
+let container = document.getElementById("logContainer");
+
+logs.reverse().forEach(log => {
+
+container.innerHTML += `
+
+<div class="log-card">
+
+<h3>${log.date}</h3>
+
+<ul>
+
+<li>${log.title}</li>
+<li>${log.text}</li>
+
+</ul>
+
+</div>
+
+`;
+
+});
+
+</script>
+
+</body>
+</html>

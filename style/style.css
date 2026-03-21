@@ -1,0 +1,432 @@
+/* ================= GLOBAL ================= */
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f6f9;
+}
+
+/* ================= HERO ================= */
+
+.hero {
+    position: relative;
+    height: 60vh;
+    background-image: url("images/background.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    padding-left: 80px;
+    color: white;
+    border-bottom: 4px solid gold;
+    overflow: hidden;
+}
+
+.navbar {
+  list-style: none;
+  display: flex;
+  justify-content: center; 
+  background-color: #ffffff;
+  padding: 15px 20px;
+  margin: 0;
+}
+
+body{
+  background:#cac9c9;
+  font-family:Arial;
+}
+
+
+/* Überschriften */
+h1{
+  text-align:center;
+  margin-top:40px;
+}   
+
+
+/* Projektstatus Karten */
+
+.project{
+  background:#e8e8e8;
+  padding:20px;
+  margin:15px auto;
+  max-width:600px;
+  border-radius:15px;
+}
+
+
+/* Fortschrittsbalken */
+
+.progress-container{
+  background:#602af5;
+  border-radius:20px;
+  overflow:hidden;
+  height:20px;
+}
+
+
+.progress-bar{
+  background:#47b431;
+  height:100%;
+  text-align:right;
+  padding-right:10px;
+  color:white;
+  line-height:20px;
+
+  animation: load 2s ease;
+}
+
+
+/* Streifen Animation */
+
+.striped{
+  background-image: repeating-linear-gradient(
+    45deg,
+    rgba(255,255,255,0.2) 0px,
+    rgba(255,255,255,0.2) 10px,
+    transparent 10px,
+    transparent 20px
+  );
+
+  animation: move 1s linear infinite;
+}
+
+
+@keyframes move{
+  from{background-position:0 0;}
+  to{background-position:40px 0;}
+}
+
+
+
+/* Changelog Karten */
+
+.log-card{
+  background:#ffffff;
+  padding:20px;
+  margin:20px auto;
+  max-width:600px;
+  border-radius:15px;
+}
+
+.navbar li {
+  margin: 0;
+}
+
+.navbar a {
+  display: block;
+  padding: 15px 20px;
+  color: rgb(92, 92, 92);
+}
+
+.navbar a:hover {
+  background-color: #cccccc; 
+  border-radius: 10px;
+}
+
+.btn {
+  background: #2c3e50;
+  color: white;
+  padding: 8px 18px;
+  border-radius: 20px;
+  text-decoration: none;
+}
+
+.hero {
+  margin-top: 80px;
+}
+
+.server-status-box {
+    bottom: 40px;
+    left: 80px;
+    background: rgba(0,0,0,0.55);
+    backdrop-filter: blur(10px);
+    padding: 20px 25px;
+    border-radius: 14px;
+}
+
+.server-status-box h3 {
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.server-status-box p {
+    margin: 6px 0;
+    font-size: 14px;
+}
+
+.online {
+    color: #4CAF50;
+}
+
+.offline {
+    color: red;
+}
+
+/* DUNKLER OVERLAY */
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    z-index: 1;
+}
+
+/* TEXT ÜBER OVERLAY */
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+}
+
+.vip {
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+.hero h1 {
+    font-size: 50px;
+    margin: 10px 0;
+}
+
+.beschreibung {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+/* PLAY BUTTON */
+.play-button {
+    position: absolute;
+    right: 80px;
+    z-index: 2;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 2px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.play-button:hover {
+    background: white;
+    color: black;
+}
+
+/* ================= SECTION HEADER ================= */
+
+.models-header {
+    text-align: center;
+    padding: 20px 20px 20px;
+    background: #f4f6f9;
+}
+.models-header1 {
+    text-align: center;
+    padding: 20px 20px 20px;
+    background: #f4f6f9;
+}
+
+
+.models-header h2 {
+    font-size: 42px;
+    color: #3d5a80;
+    margin-bottom: 20px;
+}
+
+/* Kleine Linie mit Punkten */
+.divider {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 20px;
+}
+
+.divider span {
+    height: 4px;
+    width: 40px;
+    background: #3d5a80;
+    border-radius: 10px;
+}
+
+.divider span:nth-child(2) {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+/* Untertext */
+.models-header p {
+    font-size: 16px;
+    color: #3d5a80;
+}
+
+.models-header strong {
+    color: #1d3557;
+}
+
+/* ================= PRICING ================= */
+
+.pricing {
+    padding: 100px 20px;
+    text-align: center;
+}
+
+.pricing-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+/* ================= MODEL CARDS ================= */
+
+.club-models {
+    max-width: 1200px;
+    margin: 100px auto;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+/* CARD */
+.model-card {
+    flex: 1;
+    max-width: 350px;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+.model-card:hover {
+    transform: translateY(-10px);
+}
+
+/* IMAGE */
+.model-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 12px 12px 0 0;
+}
+
+/* TITLE */
+.model-card h3 {
+    margin-top: 20px;
+    font-size: 20px;
+    color: #2f4f6f;
+}
+
+/* TEXT */
+.model-card p {
+    padding: 0 20px;
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 15px 0 25px;
+}
+
+/* BUTTON */
+.model-card button {
+    margin-bottom: 30px;
+    padding: 12px 25px;
+    border-radius: 30px;
+    border: none;
+    background: #2f4f6f;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.model-card button:hover {
+    background: #1f364d;
+}
+
+/* GOLD VERSION */
+.gold-model img {
+    filter: brightness(1.05);
+}
+
+.gold-model h3 {
+    color: #b68a00;
+}
+
+/* ================= TABELLE ================= */
+
+.comparison {
+    padding: 100px 20px;
+    text-align: center;
+}
+
+.comparison table {
+    width: 85%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #dcdcdc;
+}
+
+.comparison th {
+    background: #2f4f6f;
+    color: white;
+    padding: 15px;
+}
+
+.comparison td {
+    padding: 14px;
+    border-bottom: 1px solid #eee;
+}
+
+.comparison td:first-child {
+    text-align: left;
+    padding-left: 20px;
+}
+
+.comparison tr:hover {
+    background: #f9fafc;
+}
+
+.comparison td:last-child,
+.comparison th:last-child {
+    background: #f0e2b6;
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 900px) {
+
+    .hero {
+        padding-left: 30px;
+        background-attachment: scroll; /* Parallax deaktivieren auf Handy */
+    }
+
+    .hero h1 {
+        font-size: 36px;
+    }
+
+    .play-button {
+        right: 30px;
+    }
+
+    .pricing-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .gold {
+        transform: none;
+    }
+
+    .comparison table {
+        width: 100%;
+    }
+}
