@@ -9,24 +9,42 @@ function postUpdate() {
     const category = document.getElementById("category").value.trim();
     const date = new Date().toISOString().split("T")[0];
 
-    // Prüfen, ob alle Felder ausgefüllt sind
     if (!title || !text || !category) {
         alert("Bitte alle Felder ausfüllen!");
         return;
     }
 
-    // Payload für Discord
+    // Farben je Kategorie (Discord Farben in Dezimal)
+    const categoryColors = {
+        "Update": 5763719,       // Blau
+        "Construction": 16753920, // Orange
+        "Bugfix": 16711680,      // Rot
+        "Improvement": 65280      // Grün
+    };
+
     const payload = {
         embeds: [
             {
                 title: title,
-                description: `Category: ${category}\nDate: ${date}\n\n${text}`,
-                color: 5763719 // Blau-ish
+                color: categoryColors[category] || 5763719,
+                fields: [
+                    { name: "Category", value: category, inline: true },
+                    { name: "Date", value: date, inline: true },
+                    { name: "Description", value: text }
+                ],
+                author: {
+                    name: "Admin Changelog",
+                    icon_url: "https://i.imgur.com/0PjQXzU.png" // kleines Symbol
+                },
+                footer: {
+                    text: "Powered by Admin Panel",
+                    icon_url: "https://i.imgur.com/0PjQXzU.png"
+                },
+                timestamp: new Date()
             }
         ]
     };
 
-    // Nachricht an Discord senden
     fetch(webhookURL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -35,7 +53,6 @@ function postUpdate() {
     .then(response => {
         if (response.ok) {
             alert("Update erfolgreich an Discord gesendet!");
-            // Optional: Felder zurücksetzen
             document.getElementById("title").value = "";
             document.getElementById("text").value = "";
             document.getElementById("category").value = "Update";
@@ -50,7 +67,7 @@ function postUpdate() {
     });
 }
 
-// Optional: Live Preview (falls du es nicht schon im HTML hast)
+// Live Preview
 document.getElementById("text").addEventListener("input", function() {
     document.getElementById("previewText").innerText = this.value;
 });
